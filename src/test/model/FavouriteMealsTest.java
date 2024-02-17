@@ -1,7 +1,6 @@
 package model;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +9,7 @@ class FavouriteMealsTest {
     Meal M2;
     Meal M3;
     Meal M4;
-    Meals FML1;
+    FavouriteMeals FML1;
 
     @BeforeEach
     void runBefore() {
@@ -34,6 +33,25 @@ class FavouriteMealsTest {
     void testRemoveMeal() {
         M1.setFavourite(true);
         M2.setFavourite(true);
+        FML1.addMeal(M1);
+        FML1.addMeal(M2);
+        FML1.removeFavouriteMeal(M2);
         assertEquals(1, FML1.mealListSize());
+    }
+
+    @Test
+    void testIsEmpty() {
+        assertTrue(FML1.isEmpty());
+    }
+
+    @Test
+    void testMealListSize() {
+        assertEquals(0, FML1.mealListSize());
+
+        M1.setFavourite(true);
+        M2.setFavourite(true);
+        FML1.addMeal(M1);
+        FML1.addMeal(M2);
+        assertEquals(2, FML1.mealListSize());
     }
 }

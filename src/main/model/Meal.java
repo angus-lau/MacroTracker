@@ -122,11 +122,4 @@ public class Meal {
         this.date = date;
     }
 
-
-
-
-
-
-
-
 }

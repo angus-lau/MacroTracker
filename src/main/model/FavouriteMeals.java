@@ -52,7 +52,7 @@ public class FavouriteMeals extends Meals {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("FavouriteMeals", favouriteMealsToJson());
+        json.put("Favourite Meals", favouriteMealsToJson());
         return json;
     }
 

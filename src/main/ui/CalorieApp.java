@@ -19,7 +19,7 @@ public class CalorieApp {
     private Meal meal;
     private double calorieGoal;
     private int date;
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/MealFile.json";
     private MealFile mealFile;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;

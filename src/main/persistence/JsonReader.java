@@ -13,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-// Represents a reader that reads MealList from JSON data stored in file
+// Represents a reader that reads mealFile from JSON data stored in file
 // Pulled from Workroom
 public class JsonReader {
     private String source;
@@ -23,7 +23,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads mealFile from file and returns it;
     // throws IOException if an error occurs reading data from file
     public MealFile read() throws IOException {
         String jsonData = readFile(source);
@@ -47,7 +47,7 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         MealFile mf = new MealFile(name);
         addMeals(mf, jsonObject);
-//        addFavouriteMeal(mf, jsonObject);
+        addFavouriteMeals(mf, jsonObject);
         return mf;
     }
 
@@ -62,14 +62,13 @@ public class JsonReader {
         }
     }
 
-//    private void addFavouriteMeals(MealFile mf, JSONObject jsonObject) {
-//        JSONArray jsonArray = jsonObject.getJSONArray("FavouriteMeals");
-//        for (Object json : jsonArray) {
-//            JSONObject nextMeal = (JSONObject) json;
-////            addMeal(mf, nextMeal);
-//            addFavouriteMeal(mf, nextMeal);
-//        }
-//    }
+    private void addFavouriteMeals(MealFile mf, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("Favourite Meals");
+        for (Object json : jsonArray) {
+            JSONObject nextMeal = (JSONObject) json;
+            addFavouriteMeal(mf, nextMeal);
+        }
+    }
 
     // MODIFIES: wf
     // EFFECTS: parses meal from JSON object and adds it to mealFile
@@ -89,21 +88,21 @@ public class JsonReader {
         mf.addMeal(meal);
     }
 
-    // MODIFIES: wf
-    // EFFECTS: parses meal from JSON object and adds it to mealFile
-//    private void addFavouriteMeal(MealFile mf, JSONObject jsonObject) {
-//        String name = jsonObject.getString("name");
-//        double portion = jsonObject.getDouble("portion");
-//        double calories = jsonObject.getDouble("calories");
-//        double protein = jsonObject.getDouble("protein");
-//        double fat = jsonObject.getDouble("fat");
-//        double carbs = jsonObject.getDouble("carbs");
-//        boolean favourite = jsonObject.getBoolean("favourite");
-//        int date = jsonObject.getInt("date");
-//
-//        Meal meal = new Meal(name, portion, calories, protein, fat, carbs);
-//        meal.setDate(date);
-//        meal.setFavourite(favourite);
-//        mf.addFavouriteMeals(meal);
-//    }
+//     MODIFIES: wf
+//     EFFECTS: parses meal from JSON object and adds it to mealFile
+    private void addFavouriteMeal(MealFile mf, JSONObject jsonObject) {
+        String name = jsonObject.getString("name");
+        double portion = jsonObject.getDouble("portion");
+        double calories = jsonObject.getDouble("calories");
+        double protein = jsonObject.getDouble("protein");
+        double fat = jsonObject.getDouble("fat");
+        double carbs = jsonObject.getDouble("carbs");
+        boolean favourite = jsonObject.getBoolean("favourite");
+        int date = jsonObject.getInt("date");
+
+        Meal meal = new Meal(name, portion, calories, protein, fat, carbs);
+        meal.setDate(date);
+        meal.setFavourite(favourite);
+        mf.addFavouriteMeals(meal);
+    }
 }

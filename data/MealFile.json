@@ -5,7 +5,7 @@
         "carbs": 1,
         "portion": 1,
         "protein": 1,
-        "name": "NEWMEAL",
+        "name": "REALMEAL",
         "fat": 1,
         "calories": 1,
         "favourite": false
@@ -15,7 +15,7 @@
         "carbs": 1,
         "portion": 1,
         "protein": 1,
-        "name": "NEWFAVMEAL",
+        "name": "REALFAVMEAL",
         "fat": 1,
         "calories": 1,
         "favourite": true

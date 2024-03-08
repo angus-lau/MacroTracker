@@ -17,7 +17,7 @@ seeing a history of how I've been doing as that can provide motivation to contin
 ### User Stories
 - As a user, I want to be able to record a meal and specify macros and portion size.
 - As a user, I want to be able to see a log of what I've eaten within a timeframe e.g day, month.
-- As a user, I want to see my consumed protein versus my protein goal.
+- As a user, I want to see my consumed calories vs. what I have remaining.
 - As a user, I want to be able to add meals to a list of favourites.
 - As a user, I want to have the option to save my list of consumed meals, favourites, and protein goal. 
 - As a user, I want to have the option to open my consumed meals, favourites, and protein goal. 

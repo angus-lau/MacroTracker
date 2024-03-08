@@ -1,9 +1,14 @@
 package ui;
 
 import model.Meal;
+import model.MealFile;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class CalorieApp {
     private ArrayList<Meal> listOfMeals;
@@ -14,9 +19,16 @@ public class CalorieApp {
     private Meal meal;
     private double calorieGoal;
     private int date;
+    private static final String JSON_STORE = "./data/workroom.json";
+    private MealFile mealFile;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: run the calorie app
     public CalorieApp() {
+        mealFile = new MealFile("User 1");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runCalorie();
     }
 
@@ -56,6 +68,8 @@ public class CalorieApp {
         System.out.println("\t4: Retrieve a log of meals on a certain day");
         System.out.println("\t5: See your favourites");
         System.out.println("\t6: Add to your favourites");
+        System.out.println("\t7: Save Meal File to file");
+        System.out.println("\t8: Load Meal File to file");
         System.out.println("\t9: Quit");
     }
 
@@ -81,11 +95,47 @@ public class CalorieApp {
             case 6:
                 addFavourites();
                 break;
+            case 7:
+                saveMealFile();
+                break;
+            case 8:
+                loadMealFile();
+                break;
             default:
                 System.out.println("Sorry, that is not an option");
                 break;
         }
 
+    }
+
+    private void saveMealFile() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(mealFile);
+            jsonWriter.close();
+            System.out.println("Saved " + mealFile.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadMealFile() {
+        try {
+            mealFile = jsonReader.read();
+            listOfMeals = new ArrayList<>(mealFile.getMeals());
+            for (Meal m : listOfMeals) {
+                stringListOfMeals.add(m.getName());
+            }
+            listOfFavouriteMeals = new ArrayList<>(mealFile.getFavouriteMeals());
+            for (Meal m : listOfFavouriteMeals) {
+                stringListOfFavouriteMeals.add(m.getName());
+            }
+            System.out.println("Loaded " + mealFile.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     //MODIFIES: this
@@ -141,6 +191,7 @@ public class CalorieApp {
         meal = new Meal(mealName, portions, calories, proteins, fats, carbs);
         meal.setDate(date);
         listOfMeals.add(meal);
+        mealFile.addMeal(meal);
         stringListOfMeals.add(meal.getName());
         System.out.println("You have " + remainingCalories(meal) + " left.");
     }
@@ -195,6 +246,7 @@ public class CalorieApp {
         meal.setFavourite(true);
 
         listOfFavouriteMeals.add(meal);
+        mealFile.addFavouriteMeals(meal);
         stringListOfFavouriteMeals.add(mealName);
 
         System.out.println("Meal Added");

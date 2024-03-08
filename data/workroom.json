@@ -1,0 +1,24 @@
+{
+    "name": "User 1",
+    "Meals": [{
+        "date": 123123,
+        "carbs": 1,
+        "portion": 1,
+        "protein": 1,
+        "name": "NEWMEAL",
+        "fat": 1,
+        "calories": 1,
+        "favourite": false
+    }],
+    "Favourite Meals": [{
+        "date": 0,
+        "carbs": 1,
+        "portion": 1,
+        "protein": 1,
+        "name": "NEWFAVMEAL",
+        "fat": 1,
+        "calories": 1,
+        "favourite": true
+    }],
+    "Calories": 0
+}

@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 //Represents a list of meals
 
@@ -113,6 +116,23 @@ public class Meals {
     // EFFECTS: return # of meals in list
     public int mealListSize() {
         return mealList.size();
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("Meals", mealListToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray mealListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Meal m : mealList) {
+            jsonArray.put(m.toJson());
+        }
+
+        return jsonArray;
     }
 
 }

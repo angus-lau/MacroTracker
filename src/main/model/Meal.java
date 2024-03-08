@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 public class Meal {
     private String name;
     private double portion;
@@ -122,4 +125,17 @@ public class Meal {
         this.date = date;
     }
 
+    // EFFECTS: creates jsonObject of a Meal
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("portion", portion);
+        json.put("calories", calories);
+        json.put("protein", protein);
+        json.put("fat", fat);
+        json.put("carbs", carbs);
+        json.put("favourite", favourite);
+        json.put("date", date);
+        return json;
+    }
 }

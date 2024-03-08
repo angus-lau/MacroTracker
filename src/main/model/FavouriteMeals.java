@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class FavouriteMeals extends Meals {
@@ -44,5 +47,23 @@ public class FavouriteMeals extends Meals {
     // EFFECTS: return # of meals in list
     public int mealListSize() {
         return favouriteMeals.size();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("FavouriteMeals", favouriteMealsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this mealFile as a JSON array
+    private JSONArray favouriteMealsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Meal m : favouriteMeals) {
+            jsonArray.put(m.toJson());
+        }
+
+        return jsonArray;
     }
 }

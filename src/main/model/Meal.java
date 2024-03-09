@@ -3,6 +3,7 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+//REPRESENTS: a meal and everything of interest that represents a meal.
 public class Meal {
     private String name;
     private double portion;
@@ -70,6 +71,7 @@ public class Meal {
         return date;
     }
 
+    //EFFECT: return month of meal
     public int getMonth(String month) {
         if (month.length() > 2) {
             return Integer.parseInt(month) / 10000;
@@ -126,6 +128,7 @@ public class Meal {
     }
 
     // EFFECTS: creates jsonObject of a Meal
+    // from JSONSerializationDemo
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);

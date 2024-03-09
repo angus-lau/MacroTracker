@@ -118,13 +118,15 @@ public class Meals {
         return mealList.size();
     }
 
+    //EFFECT: return convert Meal as JSON object
+    // from JSONSerializationDemo
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("Meals", mealListToJson());
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: return converted meal list as a JSON array
     private JSONArray mealListToJson() {
         JSONArray jsonArray = new JSONArray();
 

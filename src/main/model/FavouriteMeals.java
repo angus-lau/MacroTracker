@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+//REPRESENTS: a class of favourite meals which extends meals.
 public class FavouriteMeals extends Meals {
     private ArrayList<Meal> favouriteMeals;
 
@@ -50,13 +51,16 @@ public class FavouriteMeals extends Meals {
     }
 
     @Override
+    //EFFECTS: returns favourite meal as JSON object
+    // from JSONSerializationDemo
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("Favourite Meals", favouriteMealsToJson());
         return json;
     }
 
-    // EFFECTS: returns things in this mealFile as a JSON array
+    // EFFECTS: returns list of favourite Meals as JSON object
+    // from JSONSerializationDemo
     private JSONArray favouriteMealsToJson() {
         JSONArray jsonArray = new JSONArray();
 

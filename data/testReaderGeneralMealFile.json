@@ -5,7 +5,7 @@
         "carbs": 1,
         "portion": 1,
         "protein": 1,
-        "name": "REALMEAL",
+        "name": "MEAL111",
         "fat": 1,
         "calories": 1,
         "favourite": false
@@ -15,10 +15,10 @@
         "carbs": 1,
         "portion": 1,
         "protein": 1,
-        "name": "REALFAVMEAL",
+        "name": "FAVMEAL1111",
         "fat": 1,
         "calories": 1,
         "favourite": true
     }],
-    "Calories": 0
+    "Calories": 1000
 }

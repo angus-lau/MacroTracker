@@ -13,7 +13,7 @@ public class MealFile implements Writable {
     private String name;
     private ArrayList<Meal> favouriteMeals;
     private ArrayList<Meal> meals;
-    private double calorieGoal;
+    private int calorieGoal;
 
     //EFFECTS: constructs a MealFile with an empty list of favouriteMeals, Meals and 0 calories.
     public MealFile(String name) {
@@ -23,40 +23,52 @@ public class MealFile implements Writable {
         meals = new ArrayList<>();
     }
 
+    //REQUIRES: non-zero, or negative
+    //MODIFIES: this
+    //EFFECT: set amount for calorie goal
     public void setCalorieGoal(int calorie) {
         calorieGoal = calorie;
     }
 
+    public int getCalorieGoal() {
+        return calorieGoal;
+    }
+
+    //EFFECT: return name of File.
     public String getName() {
         return name;
     }
 
+    //MODIFIES: this
+    //EFFECT: add meal to list of meals
     public void addMeal(Meal meal) {
         meals.add(meal);
     }
 
+    //MODIFIES: this
+    //EFFECT: add favourite meals to list of favourite meals
     public void addFavouriteMeals(Meal meal) {
         favouriteMeals.add(meal);
     }
 
-    //EFFECT: returns number of meals in this meal file
+    //EFFECTS: returns number of meals in this File
     public int numMeals() {
         return meals.size();
     }
 
-    //EFFECT: returns number of favourite meals in this meal file
+    //EFFECTS: returns number of favourite meals in this File
     public int numFavouriteMeals() {
         return favouriteMeals.size();
     }
 
-    // EFFECTS: returns an unmodifiable list of Meals in this player data
-    // from JsonSerializationDemo
+    // EFFECTS: returns immutable list of Meals
+    // from JSONSerializationDemo
     public List<Meal> getMeals() {
         return Collections.unmodifiableList(meals);
     }
 
-    // EFFECTS: returns an unmodifiable list of Favourite Meals in this player data
-    // from JsonSerializationDemo
+    // EFFECTS: return immuatable list of Favourite Meals
+    // from JSONSerializationDemo
     public List<Meal> getFavouriteMeals() {
         return Collections.unmodifiableList(favouriteMeals);
     }
@@ -73,8 +85,8 @@ public class MealFile implements Writable {
 
     }
 
-    //EFFECTS: converts meals to JSON Object
-    // from JsonSerializationDemo
+    //EFFECTS: converts meals to JSON array
+    // from JSONSerializationDemo
     private JSONArray mealsToJson() {
         JSONArray jsonArray = new JSONArray();
 
@@ -85,6 +97,8 @@ public class MealFile implements Writable {
         return jsonArray;
     }
 
+    //EFFECTS: converts favourite meals to JSON array
+    // from JSONSerializationDemo
     private JSONArray favouriteMealsToJson() {
         JSONArray jsonArray = new JSONArray();
 

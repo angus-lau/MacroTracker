@@ -1,7 +1,5 @@
 package persistence;
 
-import model.FavouriteMeals;
-import model.Meals;
 import model.Meal;
 import model.MealFile;
 import org.json.JSONArray;
@@ -14,17 +12,19 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 // Represents a reader that reads mealFile from JSON data stored in file
-// Pulled from Workroom
+// from JSONSerializationDemo
 public class JsonReader {
     private String source;
 
     // EFFECTS: constructs reader to read from source file
+    // from JSONSerializationDemo
     public JsonReader(String source) {
         this.source = source;
     }
 
     // EFFECTS: reads mealFile from file and returns it;
     // throws IOException if an error occurs reading data from file
+    // from JSONSerializationDemo
     public MealFile read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
@@ -32,6 +32,7 @@ public class JsonReader {
     }
 
     // EFFECTS: reads source file as string and returns it
+    // from JSONSerializationDemo
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
@@ -42,7 +43,9 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
+    // MODIFIES: this
     // EFFECTS: parses MealFile from JSON object and returns it
+    // from JSONSerializationDemo
     private MealFile parseMealFile(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         MealFile mf = new MealFile(name);
@@ -51,17 +54,20 @@ public class JsonReader {
         return mf;
     }
 
-    // MODIFIES: wf
+    // MODIFIES: this
     // EFFECTS: parses meals from JSON object and adds them to mealFile
+    // from JSONSerializationDemo
     private void addMeals(MealFile mf, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("Meals");
         for (Object json : jsonArray) {
             JSONObject nextMeal = (JSONObject) json;
             addMeal(mf, nextMeal);
-//            addFavouriteMeal(mf, nextMeal);
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: parses meal from JSON object and adds it to mealFile
+    // from JSONSerializationDemo
     private void addFavouriteMeals(MealFile mf, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("Favourite Meals");
         for (Object json : jsonArray) {
@@ -70,7 +76,7 @@ public class JsonReader {
         }
     }
 
-    // MODIFIES: wf
+    // MODIFIES: this
     // EFFECTS: parses meal from JSON object and adds it to mealFile
     private void addMeal(MealFile mf, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
@@ -88,8 +94,8 @@ public class JsonReader {
         mf.addMeal(meal);
     }
 
-//     MODIFIES: wf
-//     EFFECTS: parses meal from JSON object and adds it to mealFile
+//     MODIFIES: this
+//     EFFECTS: parses Favourite Meal from JSON object and adds it to mealFile
     private void addFavouriteMeal(MealFile mf, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         double portion = jsonObject.getDouble("portion");

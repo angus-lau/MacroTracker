@@ -1,13 +1,17 @@
-//package persistence;
-//
-//import model.Category;
-//import model.Thingy;
-//
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//
-//public class JsonTest {
-//    protected void checkThingy(String name, Category category, Thingy thingy) {
-//        assertEquals(name, thingy.getName());
-//        assertEquals(category, thingy.getCategory());
-//    }
-//}
+package persistence;
+
+import model.Meal;
+
+public class JsonTest {
+    protected void checkMeal(String name, double portion, double calories,
+                             double protein, double fat, double carbs, boolean favourite, int date, Meal meal) {
+        assertEquals(name, meal.getName());
+        assertEquals(portion, meal.getPortion());
+        assertEquals(calories, meal.getCalories());
+        assertEquals(protein, meal.getProtein());
+        assertEquals(fat, meal.getFat());
+        assertEquals(carbs, meal.getCarbs());
+        assertEquals(favourite, meal.isFavourite());
+        assertEquals(date, meal.getDate());
+    }
+}

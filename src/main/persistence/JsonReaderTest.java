@@ -1,52 +1,54 @@
-//package persistence;
-//
-//import model.Category;
-//import model.Thingy;
-//import model.WorkRoom;
-//import org.junit.jupiter.api.Test;
-//
-//import java.io.IOException;
-//import java.util.List;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//
-//class JsonReaderTest extends JsonTest {
-//
-//    @Test
-//    void testReaderNonExistentFile() {
-//        JsonReader reader = new JsonReader("./data/noSuchFile.json");
-//        try {
-//            WorkRoom wr = reader.read();
-//            fail("IOException expected");
-//        } catch (IOException e) {
-//            // pass
-//        }
-//    }
-//
-//    @Test
-//    void testReaderEmptyWorkRoom() {
-//        JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
-//        try {
-//            WorkRoom wr = reader.read();
-//            assertEquals("My work room", wr.getName());
-//            assertEquals(0, wr.numThingies());
-//        } catch (IOException e) {
-//            fail("Couldn't read from file");
-//        }
-//    }
-//
-//    @Test
-//    void testReaderGeneralWorkRoom() {
-//        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
-//        try {
-//            WorkRoom wr = reader.read();
-//            assertEquals("My work room", wr.getName());
-//            List<Thingy> thingies = wr.getThingies();
-//            assertEquals(2, thingies.size());
-//            checkThingy("needle", Category.STITCHING, thingies.get(0));
-//            checkThingy("saw", Category.WOODWORK, thingies.get(1));
-//        } catch (IOException e) {
-//            fail("Couldn't read from file");
-//        }
-//    }
-//}
+package persistence;
+
+import model.MealFile;
+
+import org.junit.jupiter.api.Test;
+import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.*;
+
+//tests from/inspired JSONSerializationDemo
+class JsonReaderTest extends JsonTest {
+
+    @Test
+    void testReaderNonExistentFile() {
+        JsonReader reader = new JsonReader("./data/NotPossibleFile.json");
+        try {
+            MealFile mf = reader.read();
+            fail("IOException expected");
+        } catch (IOException e) {
+            // pass
+        }
+    }
+
+    @Test
+    void testReaderEmptyMealFile() {
+        JsonReader reader = new JsonReader("./data/testReaderEmptyMealFile.json");
+        try {
+            MealFile mf = reader.read();
+            assertEquals("", mf.getName());
+            assertEquals(0, mf.numMeals());
+            assertEquals(0, mf.numFavouriteMeals());
+            assertEquals(0, mf.getCalorieGoal());
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
+    }
+
+    @Test
+    void testReaderGeneralMealFile() {
+        JsonReader reader = new JsonReader("./data/testReaderGeneralMealFile.json");
+        try {
+            MealFile mf = reader.read();
+            assertEquals("User 1", mf.getName());
+            List<Meal> meal = mf.getMeals();
+            List<Meal> favouriteMeals = mf.getFavouriteMeals();
+            assertEquals(1, mf.numMeals());
+            assertEquals(1, mf.numFavouriteMeals());
+            checkMeal("MEAL111", 1,1,1,1,1, false, 123123, mf.getMeals().get(0));
+            checkMeal("FAVMEAL1111", 1,1,1,1,1,true, 0, mf.getFavouriteMeals().get(0));
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
+    }
+}
+

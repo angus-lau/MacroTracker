@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 
+//Represents a Calorie App and what it contains
 public class CalorieApp {
     private ArrayList<Meal> listOfMeals;
     private ArrayList<String> stringListOfMeals;
@@ -17,9 +18,9 @@ public class CalorieApp {
     private ArrayList<String> stringListOfFavouriteMeals;
     private Scanner input;
     private Meal meal;
-    private double calorieGoal;
+    private int calorieGoal;
     private int date;
-    private static final String JSON_STORE = "./data/MealFile.json";
+    private static final String JSON_STORE = "./data/testReaderGeneralMealFile.json";
     private MealFile mealFile;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -107,7 +108,8 @@ public class CalorieApp {
         }
 
     }
-
+    //EFFECTS: save Meal File to File
+    // from JSONSerializationDemo
     private void saveMealFile() {
         try {
             jsonWriter.open();
@@ -120,7 +122,8 @@ public class CalorieApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads Meal File from file
+    // from JSONSerializationDemo
     private void loadMealFile() {
         try {
             mealFile = jsonReader.read();
@@ -156,6 +159,7 @@ public class CalorieApp {
         System.out.println("What is your calorie goal?");
         calorieGoal = input.nextInt();
         System.out.println("Your goal is now: " + calorieGoal);
+        mealFile.setCalorieGoal(calorieGoal);
     }
 
     //MODIFIES: this
@@ -193,7 +197,7 @@ public class CalorieApp {
         listOfMeals.add(meal);
         mealFile.addMeal(meal);
         stringListOfMeals.add(meal.getName());
-        System.out.println("You have " + remainingCalories(meal) + " left.");
+//        System.out.println("You have " + remainingCalories(meal) + " left.");
     }
 
     //EFFECTS: search for meals that were eaten on given date

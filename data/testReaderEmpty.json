@@ -1,0 +1,24 @@
+{
+  "name": "",
+  "Meals": [{
+    "date": 0,
+    "carbs": 0,
+    "portion": 0,
+    "protein":0 ,
+    "name": "",
+    "fat": 0,
+    "calories": 0,
+    "favourite": false
+  }],
+  "Favourite Meals": [{
+    "date": 0,
+    "carbs": 0,
+    "portion": 0,
+    "protein": 0,
+    "name": "",
+    "fat": 0,
+    "calories": 0,
+    "favourite": false
+  }],
+  "Calories": 0
+}

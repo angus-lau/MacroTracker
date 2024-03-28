@@ -1,11 +1,12 @@
 {
-    "name": "User 1",
+    "Calorie Goal": 0,
+    "name": "User2",
     "Meals": [{
-        "date": 123123,
+        "date": 0,
         "carbs": 1,
         "portion": 1,
         "protein": 1,
-        "name": "MEAL111",
+        "name": "Burger",
         "fat": 1,
         "calories": 1,
         "favourite": false
@@ -15,10 +16,9 @@
         "carbs": 1,
         "portion": 1,
         "protein": 1,
-        "name": "FAVMEAL1111",
+        "name": "Soup",
         "fat": 1,
         "calories": 1,
-        "favourite": true
-    }],
-    "Calorie Goal": 1000
+        "favourite": false
+    }]
 }

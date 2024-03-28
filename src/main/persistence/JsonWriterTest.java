@@ -29,7 +29,7 @@ class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterEmptyWorkroom() {
+    void testWriterEmptyMealFile() {
         try {
             MealFile mf = new MealFile("User 1");
             JsonWriter writer = new JsonWriter("./data/testReaderEmpty.json");
@@ -48,17 +48,17 @@ class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterGeneralWorkroom() {
+    void testWriterGeneralMealFile() {
         try {
             MealFile mf = new MealFile("User2");
             mf.addMeal(new Meal("Burger",1,1,1,1,1));
             mf.addFavouriteMeals(new Meal("Soup", 1,1,1,1,1));
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralMealFile.json");
             writer.open();
             writer.write(mf);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralMealFile.json");
             mf = reader.read();
             assertEquals("User2", mf.getName());
             List<Meal> meal = mf.getMeals();

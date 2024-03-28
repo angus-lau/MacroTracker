@@ -27,7 +27,7 @@ class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testReaderEmpty.json");
         try {
             MealFile mf = reader.read();
-            assertEquals("", mf.getName());
+            assertEquals("User 1", mf.getName());
             assertEquals(0, mf.numMeals());
             assertEquals(0, mf.numFavouriteMeals());
             assertEquals(0, mf.getCalorieGoal());
@@ -46,6 +46,7 @@ class JsonReaderTest extends JsonTest {
             List<Meal> favouriteMeals = mf.getFavouriteMeals();
             assertEquals(1, mf.numMeals());
             assertEquals(1, mf.numFavouriteMeals());
+            assertEquals(1000, mf.getCalorieGoal());
             checkMeal("MEAL111", 1,1,1,1,1, false, 123123, mf.getMeals().get(0));
             checkMeal("FAVMEAL1111", 1,1,1,1,1,true, 0, mf.getFavouriteMeals().get(0));
         } catch (IOException e) {

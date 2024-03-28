@@ -49,12 +49,12 @@ public class JsonReader {
     private MealFile parseMealFile(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         MealFile mf = new MealFile(name);
+        mf.setCalorieGoal(jsonObject.getInt("Calorie Goal"));
         addMeals(mf, jsonObject);
         addFavouriteMeals(mf, jsonObject);
-//        String calories = jsonObject.getString("Calories");
-//        jsonObject.put("Calories", calories);
         return mf;
     }
+
 
     // MODIFIES: this
     // EFFECTS: parses meals from JSON object and adds them to mealFile

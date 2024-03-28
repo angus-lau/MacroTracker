@@ -80,7 +80,7 @@ public class MealFile implements Writable {
         json.put("name", name);
         json.put("Meals", mealsToJson());
         json.put("Favourite Meals", favouriteMealsToJson());
-        json.put("Calories", calorieGoal);
+        json.put("Calorie Goal", calorieGoal);
         return json;
 
     }

@@ -1,6 +1,9 @@
 package persistence;
 
 import model.Meal;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class JsonTest {
     protected void checkMeal(String name, double portion, double calories,

@@ -51,6 +51,8 @@ public class JsonReader {
         MealFile mf = new MealFile(name);
         addMeals(mf, jsonObject);
         addFavouriteMeals(mf, jsonObject);
+//        String calories = jsonObject.getString("Calories");
+//        jsonObject.put("Calories", calories);
         return mf;
     }
 

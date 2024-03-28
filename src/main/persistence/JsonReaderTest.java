@@ -5,13 +5,15 @@ import model.MealFile;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
+import model.Meal;
+import java.util.List;
 
 //tests from/inspired JSONSerializationDemo
 class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderNonExistentFile() {
-        JsonReader reader = new JsonReader("./data/NotPossibleFile.json");
+        JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
             MealFile mf = reader.read();
             fail("IOException expected");
@@ -22,7 +24,7 @@ class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderEmptyMealFile() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyMealFile.json");
+        JsonReader reader = new JsonReader("./data/testReaderEmpty.json");
         try {
             MealFile mf = reader.read();
             assertEquals("", mf.getName());

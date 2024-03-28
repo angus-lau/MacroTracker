@@ -5,9 +5,9 @@ import model.Meals;
 import model.MealFile;
 import org.junit.jupiter.api.Test;
 
+
 import java.io.IOException;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class JsonWriterTest extends JsonTest {
@@ -19,8 +19,8 @@ class JsonWriterTest extends JsonTest {
     @Test
     void testWriterInvalidFile() {
         try {
-            MealFile mf = new MealFile("My work room");
-            JsonWriter writer = new JsonWriter("./data/my\1232illegal:fileName.json");
+            MealFile mf = new MealFile("User 1");
+            JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
         } catch (IOException e) {
@@ -31,15 +31,15 @@ class JsonWriterTest extends JsonTest {
     @Test
     void testWriterEmptyWorkroom() {
         try {
-            MealFile mf = new MealFile("MealFile123");
-            JsonWriter writer = new JsonWriter("./data/testWriterMealFile.json");
+            MealFile mf = new MealFile("User 1");
+            JsonWriter writer = new JsonWriter("./data/testReaderEmpty.json");
             writer.open();
             writer.write(mf);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testReaderEmpty.json");
             mf = reader.read();
-            assertEquals("", mf.getName());
+            assertEquals("User 1", mf.getName());
             assertEquals(0, mf.numMeals());
             assertEquals(0, mf.numFavouriteMeals());
         } catch (IOException e) {
@@ -65,8 +65,8 @@ class JsonWriterTest extends JsonTest {
             List<Meal> favouriteMeal = mf.getFavouriteMeals();
             assertEquals(1, meal.size());
             assertEquals(1, favouriteMeal.size());
-            checkMeal("MEAL111",1,1,1,1,1,false,0, mf.getMeals().get(0));
-            checkMeal("FAVMEAL1111", 1,1,1,1,1,false,0, mf.getFavouriteMeals().get(0));
+            checkMeal("Burger",1,1,1,1,1,false,0, mf.getMeals().get(0));
+            checkMeal("Soup", 1,1,1,1,1,false,0, mf.getFavouriteMeals().get(0));
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }

@@ -4,7 +4,6 @@ import model.MealFile;
 import model.Meal;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -68,6 +67,7 @@ public class MealFileGUI extends Container {
         mainFrame.repaint();
     }
 
+    //INSPIRATION from trafficLight for statusLabel
     //MODIFIES: this
     //EFFECT: create header space
     public JPanel headerSpace() {

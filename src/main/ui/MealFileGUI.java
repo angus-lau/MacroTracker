@@ -302,10 +302,7 @@ public class MealFileGUI extends Container {
                 meal.setDate(date);
                 mealFile.addMeal(meal);
                 newMealPanel.setVisible(false);
-                mainFrame.getContentPane().removeAll();
-                mainFrame.getContentPane().add(headerSpace(),BorderLayout.NORTH);
-                mainFrame.getContentPane().add(mainArea, BorderLayout.CENTER);
-                mainFrame.setVisible(true);
+                refactorAddingPanels(mainFrame.getContentPane(), headerSpace(), mainArea);
                 revalidate();
                 repaint();
             }
@@ -334,16 +331,22 @@ public class MealFileGUI extends Container {
                 meal.setFavourite(true);
                 newFavouriteMealPanel.setVisible(false);
                 mealFile.addFavouriteMeals(meal);
-                mainFrame.getContentPane().removeAll();
-                mainFrame.getContentPane().add(headerSpace(),BorderLayout.NORTH);
-                mainFrame.getContentPane().add(mainArea, BorderLayout.CENTER);
-                mainFrame.setVisible(true);
-                revalidate();
-                repaint();
+
+                refactorAddingPanels(mainFrame.getContentPane(), headerSpace(), mainArea);
             }
         });
         panel.add(button);
         return panel;
+    }
+
+    //EFFECTS: add the content pane to the main ui
+    private void refactorAddingPanels(Container contentPane, Component headerComponent, Component mainComponent) {
+        contentPane.removeAll();
+        contentPane.add(headerComponent, BorderLayout.NORTH);
+        contentPane.add(mainComponent, BorderLayout.CENTER);
+        contentPane.setVisible(true);
+        revalidate();
+        repaint();
     }
 
     //THIS

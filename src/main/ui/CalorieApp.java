@@ -76,6 +76,7 @@ public class CalorieApp {
 
     //MODIFIES: this
     //EFFECT: process user input
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private void pickOption(int input) {
         switch (input) {
             case 1:

@@ -303,8 +303,6 @@ public class MealFileGUI extends Container {
                 mealFile.addMeal(meal);
                 newMealPanel.setVisible(false);
                 refactorAddingPanels(mainFrame.getContentPane(), headerSpace(), mainArea);
-                revalidate();
-                repaint();
             }
         });
         panel.add(button);
@@ -360,12 +358,7 @@ public class MealFileGUI extends Container {
                 newCaloriesPanel.setVisible(false);
                 int calorieGoal = Integer.parseInt(caloriesTextField.getText());
                 mealFile.setCalorieGoal(calorieGoal);
-                mainFrame.getContentPane().removeAll();
-                mainFrame.getContentPane().add(headerSpace(),BorderLayout.NORTH);
-                mainFrame.getContentPane().add(mainArea, BorderLayout.CENTER);
-                mainFrame.setVisible(true);
-                revalidate();
-                repaint();
+                refactorAddingPanels(mainFrame.getContentPane(), headerSpace(), mainArea);
 
             }
         });
@@ -383,12 +376,7 @@ public class MealFileGUI extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 newKrabbyPattyPanel.setVisible(false);
-                mainFrame.getContentPane().removeAll();
-                mainFrame.getContentPane().add(headerSpace(),BorderLayout.NORTH);
-                mainFrame.getContentPane().add(mainArea, BorderLayout.CENTER);
-                mainFrame.setVisible(true);
-                revalidate();
-                repaint();
+                refactorAddingPanels(mainFrame.getContentPane(), headerSpace(), mainArea);
 
             }
         });
@@ -406,12 +394,7 @@ public class MealFileGUI extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 newSeeFavouriteMeal.setVisible(false);
-                mainFrame.getContentPane().removeAll();
-                mainFrame.getContentPane().add(headerSpace(),BorderLayout.NORTH);
-                mainFrame.getContentPane().add(mainArea, BorderLayout.CENTER);
-                mainFrame.setVisible(true);
-                revalidate();
-                repaint();
+                refactorAddingPanels(mainFrame.getContentPane(), headerSpace(), mainArea);
             }
         });
         panel.add(button);

@@ -285,6 +285,7 @@ public class MealFileGUI extends Container {
 
     //MODIFIES: this
     //EFFECT: Creates a new panel that displays after clicking on btn
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public JPanel okButtonPanelForNewMeal() {
         JPanel panel = new JPanel();
         JButton button = new JButton("OK");
@@ -316,6 +317,7 @@ public class MealFileGUI extends Container {
 
     //MODIFIES: this
     //EFFECT: Creates a new panel that displays after clicking on btn
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public JPanel okButtonPanelForNewFavouriteMeal() {
         JPanel panel = new JPanel();
         JButton button = new JButton("OK");

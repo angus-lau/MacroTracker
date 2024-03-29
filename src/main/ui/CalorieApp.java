@@ -108,6 +108,7 @@ public class CalorieApp {
         }
 
     }
+
     //EFFECTS: save Meal File to File
     // from JSONSerializationDemo
     private void saveMealFile() {

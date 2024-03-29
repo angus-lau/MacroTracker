@@ -21,3 +21,10 @@ seeing a history of how I've been doing as that can provide motivation to contin
 - As a user, I want to be able to add meals to a list of favourites.
 - As a user, I want to have the option to save my list of consumed meals, favourites, and protein goal. 
 - As a user, I want to have the option to open my consumed meals, favourites, and protein goal. 
+
+### Instructions for Grader
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by adding a favourite meal which is displayed in see favourite meals
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by being able to delete a favourite meal, in see favourite meals, select the meal and click the delete button.
+- You can locate my visual component by clicking "Click for Krabby Patty"
+- You can save the state of my application by clicking "Save"
+- You can reload the state of my application by clicking "Load"

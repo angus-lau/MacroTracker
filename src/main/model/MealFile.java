@@ -46,6 +46,12 @@ public class MealFile implements Writable {
     }
 
     //MODIFIES: this
+    //EFFECT: remove meal from the list of meals
+    public void removeFavouriteMeal(Meal meal) {
+        favouriteMeals.remove(meal);
+    }
+
+    //MODIFIES: this
     //EFFECT: add favourite meals to list of favourite meals
     public void addFavouriteMeals(Meal meal) {
         favouriteMeals.add(meal);
@@ -61,16 +67,16 @@ public class MealFile implements Writable {
         return favouriteMeals.size();
     }
 
-    // EFFECTS: returns immutable list of Meals
+    // EFFECTS: returns list of Meals
     // from JSONSerializationDemo
     public List<Meal> getMeals() {
-        return Collections.unmodifiableList(meals);
+        return meals;
     }
 
-    // EFFECTS: return immuatable list of Favourite Meals
+    // EFFECTS: return list of Favourite Meals
     // from JSONSerializationDemo
     public List<Meal> getFavouriteMeals() {
-        return Collections.unmodifiableList(favouriteMeals);
+        return favouriteMeals;
     }
 
     // EFFECTS: converts user data to JSON object

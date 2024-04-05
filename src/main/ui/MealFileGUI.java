@@ -229,7 +229,7 @@ public class MealFileGUI extends Container {
                     statusLabel.setForeground(Color.RED);
                 }
 
-                statusLabel.setText("Saved");
+                statusLabel.setText("SAVED");
             }
         });
         return saveButton;
@@ -249,7 +249,7 @@ public class MealFileGUI extends Container {
                     statusLabel.setText("No File Found");
                     statusLabel.setForeground(Color.RED);
                 }
-                statusLabel.setText("Loaded");
+                statusLabel.setText("LOADED");
             }
         });
         return loadButton;

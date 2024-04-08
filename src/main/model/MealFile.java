@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 //Represents a users data with their favourite meals, past meals, and calorie goal.
@@ -49,12 +48,14 @@ public class MealFile implements Writable {
     //EFFECT: remove meal from the list of meals
     public void removeFavouriteMeal(Meal meal) {
         favouriteMeals.remove(meal);
+        EventLog.getInstance().logEvent(new Event("Removed " + meal.getName() + " from Favourite Meals"));
     }
 
     //MODIFIES: this
     //EFFECT: add favourite meals to list of favourite meals
     public void addFavouriteMeals(Meal meal) {
         favouriteMeals.add(meal);
+        EventLog.getInstance().logEvent(new Event("Added " + meal.getName() + " to Favourite Meals"));
     }
 
     //EFFECTS: returns number of meals in this File
@@ -114,7 +115,5 @@ public class MealFile implements Writable {
 
         return jsonArray;
     }
-    
-    
 }
 

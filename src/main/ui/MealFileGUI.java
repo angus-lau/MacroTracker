@@ -3,6 +3,10 @@ package ui;
 import model.MealFile;
 import model.Meal;
 
+import model.EventLog;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Container;
@@ -17,7 +21,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 //EFFECTS: create the Meal File GUI
-public class MealFileGUI extends Container {
+public class MealFileGUI extends Container implements WindowListener {
     private static final String STATUS = "RUNNING";
     JLabel statusLabel;
     JButton addNewMeal;
@@ -55,6 +59,7 @@ public class MealFileGUI extends Container {
         mainFrame = new JFrame("Meal Tracker V1.0");
         mainFrame.setSize(700, 200);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.addWindowListener(this);
 
         JPanel ma = mainArea();
         JPanel hs = headerSpace();
@@ -83,7 +88,8 @@ public class MealFileGUI extends Container {
         return headerSpace;
     }
 
-
+    //MODIFIES: this
+    //EFFECT: creates the main area for gui
     public JPanel mainArea() {
         mainArea = new JPanel();
         addNewMeal = new JButton("Add New Meal");
@@ -347,7 +353,7 @@ public class MealFileGUI extends Container {
         repaint();
     }
 
-    //THIS
+    //MODIFIES: THIS
     //EFFECT: Creates a new panel that displays after clicking on btn
     public JPanel okButtonPanelForCalorie() {
         JPanel panel = new JPanel();
@@ -648,6 +654,38 @@ public class MealFileGUI extends Container {
         panel.add(label);
         panel.add(dateTextField);
         return panel;
+    }
+
+    //EFFECTS: prints out every event in event log
+    @Override
+    public void windowClosing(WindowEvent e) {
+        for (model.Event event : EventLog.getInstance()) {
+            System.out.println(event);
+        }
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
     }
 
 

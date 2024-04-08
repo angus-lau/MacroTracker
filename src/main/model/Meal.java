@@ -1,7 +1,6 @@
 package model;
 
 import org.json.JSONObject;
-import persistence.Writable;
 
 //REPRESENTS: a meal and everything of interest that represents a meal.
 public class Meal {

@@ -28,3 +28,21 @@ seeing a history of how I've been doing as that can provide motivation to contin
 - You can locate my visual component by clicking "Click for Krabby Patty"
 - You can save the state of my application by clicking "Save"
 - You can reload the state of my application by clicking "Load"
+
+### Phase 4: Task 2
+- Mon Apr 08 03:39:16 PDT 2024
+Added FavMeal1 to Favourite Meals
+Mon Apr 08 03:39:18 PDT 2024
+Removed FavMeal1 from Favourite Meals
+Mon Apr 08 03:39:24 PDT 2024
+Added FavMeal2 to Favourite Meals
+Mon Apr 08 03:39:31 PDT 2024
+Added FavMeal3 to Favourite Meals
+Mon Apr 08 03:39:34 PDT 2024
+Removed FavMeal2 from Favourite Meals
+Mon Apr 08 03:39:35 PDT 2024
+Removed FavMeal3 from Favourite Meals
+
+### Phase 4: Task 3
+- One really big thing that I would focus on next time is to break down my MealFileGUI because everything was put in
+and it was really confusing for me, and it will definitely be very confusing for other programmers. 
